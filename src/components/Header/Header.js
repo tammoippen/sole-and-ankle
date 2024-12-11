@@ -35,6 +35,7 @@ const MainHeader = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Nav = styled.nav`
@@ -43,7 +44,6 @@ const Nav = styled.nav`
   align-items: center;
   gap: 48px;
 
-  margin-inline: auto;
   padding-inline: 64px;
 `;
 
