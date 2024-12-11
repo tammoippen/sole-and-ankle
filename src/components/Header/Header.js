@@ -12,6 +12,7 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
+        {/* use a Sides wrapper firth flex: 1 */}
         <Logo />
         <Nav>
           <NavLink href="/sale">Sale</NavLink>
@@ -21,6 +22,7 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
+        {/* Sides wrapper */}
         <Logo hide={true} />
       </MainHeader>
     </header>
