@@ -80,14 +80,20 @@ const ImageWrapper = styled.div`
 const Flag = styled.div`
   color: white;
   position: absolute;
-  top: 8px;
-  right: -8px;
-  padding: 8px;
+  top: 12px;
+  right: -4px;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
   background-color: var(--flag-color);
+  border-radius: 2px;
+  font-size: ${14 / 16}rem;
+  font-weight: ${WEIGHTS.bold};
 `;
 
 const Image = styled.img`
   width: 100%;
+  border-radius: 16px 16px 4px 4px;
 `;
 
 const Row = styled.div`
@@ -103,8 +109,8 @@ const Name = styled.h3`
 `;
 
 const Price = styled.span`
-  color: ${(props) => (props.sale ? COLORS.gray[700] : "inherit")};
-  text-decoration: ${(props) => (props.sale ? "line-through" : "inherit")};
+  color: ${(props) => (props.sale ? COLORS.gray[700] : undefined)};
+  text-decoration: ${(props) => (props.sale ? "line-through" : undefined)};
 `;
 
 const ColorInfo = styled.p`
