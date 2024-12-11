@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components/macro';
+import React from "react";
+import styled from "styled-components/macro";
 
-import { COLORS, WEIGHTS } from '../../constants';
-import { formatPrice, pluralize, isNewShoe } from '../../utils';
-import Spacer from '../Spacer';
+import { COLORS, WEIGHTS } from "../../constants";
+import { formatPrice, pluralize, isNewShoe } from "../../utils";
+import Spacer from "../Spacer";
 
 const ShoeCard = ({
   slug,
@@ -36,14 +36,25 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
+          {variant === "on-sale" ? (
+            <Flag style={{ "--flag-color": COLORS.primary }}>Sale</Flag>
+          ) : null}
+          {variant === "new-release" ? (
+            <Flag style={{ "--flag-color": COLORS.secondary }}>
+              Just released!
+            </Flag>
+          ) : null}
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <Price sale={variant === "on-sale"}>{formatPrice(price)}</Price>
         </Row>
         <Row>
-          <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
+          <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
+          {variant === "on-sale" ? (
+            <SalePrice>{formatPrice(salePrice)}</SalePrice>
+          ) : null}
         </Row>
       </Wrapper>
     </Link>
@@ -66,6 +77,15 @@ const ImageWrapper = styled.div`
   position: relative;
 `;
 
+const Flag = styled.div`
+  color: white;
+  position: absolute;
+  top: 8px;
+  right: -8px;
+  padding: 8px;
+  background-color: var(--flag-color);
+`;
+
 const Image = styled.img`
   width: 100%;
 `;
@@ -82,7 +102,10 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
+const Price = styled.span`
+  color: ${(props) => (props.sale ? COLORS.gray[700] : "inherit")};
+  text-decoration: ${(props) => (props.sale ? "line-through" : "inherit")};
+`;
 
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
